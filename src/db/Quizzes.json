@@ -2,7 +2,6 @@
   "Quizzes": [
     {
       "id": "125125",
-      "score": "",
       "title": "CSS",
       "questions": [
         {
@@ -31,7 +30,6 @@
     },
     {
       "id": "125",
-      "score": "",
       "title": "Javascript",
       "questions": [
         {
@@ -60,12 +58,11 @@
     },
     {
       "id": "125125",
-      "score": "",
-      "title": "HTML5",
+      "title": "Qualquer coisa",
       "questions": [
         {
           "idQuestion": "125125",
-          "description": "",
+          "description": "Oque é oque é",
           "correctAnswer": 2,
           "options": [
             "abc",
