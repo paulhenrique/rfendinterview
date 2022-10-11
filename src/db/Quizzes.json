@@ -5,58 +5,58 @@
       "title": "CSS",
       "questions": [
         {
-          "idQuestion": "124124",
-          "description": "",
-          "correctAnswer": 2,
+          "idQuestion": "css.1",
+          "description": "Para remover o sublinhado de um link, podemos usar:",
+          "correctAnswer": 1,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "{underscore : none;}",
+            "a{text-decoration: none;}",
+            "a{underline : none;}",
+            "ctrl+c ctrl+v do Stackoverflow"
           ]
         },
         {
-          "idQuestion": "12351235312",
-          "description": "",
-          "correctAnswer": 2,
+          "idQuestion": "css.2",
+          "description": "Para alterar a cor de fundo de um elemento, usamos:",
+          "correctAnswer": 3,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "color-background: cyan;",
+            "Desligar o monitor",
+            "bg-color: cyan;",
+            "background-color: cyan;"
           ]
         },
         {
-          "idQuestion": "12351235312",
-          "description": "",
-          "correctAnswer": 2,
+          "idQuestion": "css.3",
+          "description": "Para importar um novo arquivo CSS, usamos?",
+          "correctAnswer": 0,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "import('');",
+            "include css('')",
+            "aliexpress.buyCss",
+            "@import url('');"
           ]
         },
         {
-          "idQuestion": "12351235312",
-          "description": "",
-          "correctAnswer": 2,
+          "idQuestion": "css.4",
+          "description": "Para adicionar um efeito a um elemento quando o mouse passa sobre, usamos qual pseudo-classe?",
+          "correctAnswer": 0,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            ":hover{}",
+            ":active{}",
+            ":focus{}",
+            ":mouseOver"
           ]
         },
         {
-          "idQuestion": "12351235312",
-          "description": "",
-          "correctAnswer": 2,
+          "idQuestion": "css.5",
+          "description": "Para definir a largura máxima de um elemento, usamos:",
+          "correctAnswer": 3,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "width-range:",
+            "max-content:",
+            "no-max",
+            "max-width:"
           ]
         }
       ]
@@ -66,58 +66,58 @@
       "title": "Javascript",
       "questions": [
         {
-          "idQuestion": "126",
-          "description": "",
-          "correctAnswer": 2,
+          "idQuestion": "js.1",
+          "description": "Usamos try/catch para:",
+          "correctAnswer": 1,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "Podemos usar essa estrutura quando queremos acessar elementos nativos do navegador.",
+            "Tratar instruções que possam gerar erros, e assim, lançar exceções.",
+            "Funciona como o if/else, verifica se uma operação foi executada.",
+            "Tenta pegar um invasor na página."
           ]
         },
         {
-          "idQuestion": "127",
-          "description": "",
-          "correctAnswer": 2,
+          "idQuestion": "js.2",
+          "description": "Qual definição de array está incorreta?",
+          "correctAnswer": 0,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "var frutas = (array)list('maça', 'uva');",
+            "var errei = 'maça','uva';",
+            "var frutas = new Array('maça', 'uva');",
+            "var frutas = ['maça', 'uva'];"
           ]
         },
         {
-          "idQuestion": "127",
-          "description": "",
+          "idQuestion": "js.3",
+          "description": "Para finalizar o loop atual e prosseguir para a próxima iteração, usamos:",
           "correctAnswer": 2,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "exit;",
+            "break;",
+            "continue;",
+            "zéFini;"
           ]
         },
         {
-          "idQuestion": "127",
-          "description": "",
-          "correctAnswer": 2,
+          "idQuestion": "js.4",
+          "description": "Para executarmos uma operação a cada 1 segundo, podemos usar:",
+          "correctAnswer": 1,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "sleep(1000, ()=>{/* Minha operação */})",
+            "setInterval(() => { /*Minhaoperação*/ }, 1000);",
+            "function() : 100 {/*Minha operação */}",
+            "holdMybeer(() => {, 1000);"
           ]
         },
         {
-          "idQuestion": "127",
-          "description": "",
-          "correctAnswer": 2,
+          "idQuestion": "js.5",
+          "description": "Para obtermos o valor de um atributo de um elemento, usamos:",
+          "correctAnswer": 1,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "element.get('atributo'); ",
+            "element.getAttribute('atributo');",
+            "getAttribute(element, 'atributo');",
+            "Pesquisar no google."
           ]
         }
       ]
@@ -127,58 +127,58 @@
       "title": "HTML",
       "questions": [
         {
-          "idQuestion": "125125",
-          "description": "Oque é oque é",
-          "correctAnswer": 2,
+          "idQuestion": "html.1",
+          "description": "Qual tag abaixo pertence a um menu de navegação?",
+          "correctAnswer": 1,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "<menu-item>",
+            "<nav>",
+            "<item>",
+            "<Vasco-da-Gama>"
           ]
         },
         {
-          "idQuestion": "125125",
-          "description": "Oque é oque é",
-          "correctAnswer": 2,
+          "idQuestion": "html.2",
+          "description": "Como deve ser declarado um título da página?",
+          "correctAnswer": 0,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "<title>Título aqui</title>",
+            "<title title='titulo'>",
+            "<html title='Título aqui'></html>",
+            "<libertadores></libertadores>"
           ]
         },
         {
-          "idQuestion": "125125",
-          "description": "Oque é oque é",
+          "idQuestion": "html.3",
+          "description": "Qual a forma correta de se criar um link?",
           "correctAnswer": 2,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "<link rel='Link' value='Link aqui'>",
+            "<zelda born='link'></zelda>",
+            "<a href='link'>link aqui</a>",
+            "<span href='link'>Link aqui</span>"
           ]
         },
         {
-          "idQuestion": "125125",
-          "description": "Oque é oque é",
-          "correctAnswer": 2,
+          "idQuestion": "html.4",
+          "description": "Como devemos chamar um script JS?",
+          "correctAnswer": 1,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "<script src='link script'>",
+            "<script src='link script'></script>",
+            "Pelo nome",
+            "link rel='script' href='link'>"
           ]
         },
         {
-          "idQuestion": "125125",
-          "description": "Oque é oque é",
-          "correctAnswer": 2,
+          "idQuestion": "html.5",
+          "description": "Qual a forma correta de se criar uma lista?",
+          "correctAnswer": 1,
           "options": [
-            "abc",
-            "def",
-            "ghi",
-            "jkl"
+            "Ok google! Crie uma lista.",
+            "<ul> <li></li> </ul>",
+            "<li> <item></item> </li>",
+            "<list> <item></item> </list>"
           ]
         }
       ]
