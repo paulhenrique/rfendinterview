@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import NotFoundImage from "@/assets/not_found.svg";
 import { Link } from "react-router-dom";
+
 const NotFound = () => {
   return (
     <Box
@@ -29,5 +30,7 @@ const NotFound = () => {
     </Box>
   );
 };
+
+export const goToNotFound = () => <NotFound />;
 
 export default NotFound;

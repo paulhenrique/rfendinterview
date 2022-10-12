@@ -6,9 +6,10 @@ import { Home, Question, Score } from "@/pages";
  * O router faz o redirecionamento das páginas da aplicação
  * @returns
  */
-const Router = () => {
+const Router = ({ excedent }) => {
   return (
     <BrowserRouter>
+      {excedent}
       <Routes>
         <Route path="/questao/:id" element={<Question />} />
         <Route path="/score" element={<Score />} />
