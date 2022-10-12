@@ -21,8 +21,7 @@ const App = () => {
             mx: "auto",
           }}
         >
-          <AppBar />
-          <Router />
+          <Router excedent={<AppBar />} />
         </Box>
       </Provider>
     </SnackbarProvider>
