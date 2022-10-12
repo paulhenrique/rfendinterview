@@ -4,6 +4,7 @@ import { produce } from "immer";
 const initialState = {
   name: "exampleName",
   score: "",
+  realizedQuizes: [],
 };
 
 export const userSlice = createSlice({
@@ -15,9 +16,45 @@ export const userSlice = createSlice({
         draft.score = action.payload;
       });
     },
+    registerQuizAnswer: (state, action) => {
+      return produce(state, (draft) => {
+        const quizIndex = draft.realizedQuizes.findIndex(
+          (quiz) => quiz.idQuiz === action.payload.idQuiz
+        );
+
+        const answerQuestion = {
+          idQuestion: action.payload.idQuestion,
+          answer: action.payload.answer,
+        };
+
+        // se ainda não há o quiz registrado, ele o registra e adiciona a resposta default
+        if (quizIndex < 0) {
+          draft.realizedQuizes.push({
+            idQuiz: action.payload.idQuiz,
+            answers: [answerQuestion],
+          });
+          return;
+        }
+
+        const quizQuestionIndex = draft.realizedQuizes[
+          quizIndex
+        ].answers.findIndex(
+          (question) => question.idQuestion === action.payload.idQuestion
+        );
+
+        // se há o quiz já registrado, ele verifica se há a questão já registrada, se há ele atualiza a resposta, se não ele adiciona a resposta
+        if (quizQuestionIndex !== -1) {
+          draft.realizedQuizes[quizIndex].answers[quizQuestionIndex].answer =
+            action.payload.answer;
+          return;
+        }
+
+        draft.realizedQuizes[quizIndex].answers.push(answerQuestion);
+      });
+    },
   },
 });
 
-export const { registerScore } = userSlice.actions;
+export const { registerScore, registerQuizAnswer } = userSlice.actions;
 
 export default userSlice.reducer;
