@@ -37,7 +37,10 @@ export const getQuizScore = (quiz) => {
       isCorrect: +completeQuestion?.correctAnswer === +answer.answer,
     };
   });
+
   return {
+    quiz: baseQuiz,
+    complete: baseQuiz.questions.length === mappedAnswers.length,
     completeQuestions: mappedAnswers,
     score: mappedAnswers.filter((e) => e.isCorrect).length,
     wrongAnswers: mappedAnswers.filter((e) => !e.isCorrect),
