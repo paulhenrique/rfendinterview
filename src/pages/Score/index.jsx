@@ -1,9 +1,28 @@
+import { Typography } from "@mui/material";
 import React from "react";
+import { useSelector } from "react-redux";
+import { getQuizScore } from "../../db/services";
 
 const Score = () => {
-  // TODO: Criar método que retorne a pontuação do usuário
+  const { realizedQuizes } = useSelector((state) => state.user);
+  if (!realizedQuizes.length) {
+    return (
+      <>
+        <Typography>Você ainda não possui histórico</Typography>
+      </>
+    );
+  }
+
   return (
-    <div>Página em que o usuário poderá ver a sua pontuação das questões</div>
+    <div>
+      <pre>
+        {JSON.stringify(
+          { quizes: realizedQuizes.map((q) => getQuizScore(q)) },
+          null,
+          2
+        )}
+      </pre>
+    </div>
   );
 };
 

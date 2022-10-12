@@ -34,6 +34,7 @@ const AppBarNoMui = () => {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
+              sx={{ color: "white" }}
               component={Link}
               to="/"
             >
@@ -45,9 +46,7 @@ const AppBarNoMui = () => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                component={Link}
                 onClick={() => setIsDrawerOpen(true)}
-                to="/"
               >
                 <Avatar src="https://robohash.org/rfinterviewapp" />
               </IconButton>

@@ -18,3 +18,29 @@ export const getQuestionId = (selectedQuiz) => (index) => {
   }
   return selectedQuiz.questions[index]?.idQuestion;
 };
+
+export const getQuizById = (id) => {
+  const { Quizzes } = QuizzesDB;
+  return Quizzes.find((quiz) => quiz.id === id);
+};
+
+export const getQuizScore = (quiz) => {
+  const baseQuiz = getQuizById(quiz.idQuiz);
+  const { answers } = quiz;
+  const mappedAnswers = answers.map((answer) => {
+    const completeQuestion = baseQuiz.questions.find(
+      (e) => e.idQuestion === answer.idQuestion
+    );
+    return {
+      ...answer,
+      ...completeQuestion,
+      isCorrect: +completeQuestion?.correctAnswer === +answer.answer,
+    };
+  });
+  return {
+    completeQuestions: mappedAnswers,
+    score: mappedAnswers.filter((e) => e.isCorrect).length,
+    wrongAnswers: mappedAnswers.filter((e) => !e.isCorrect),
+    correctAnswers: mappedAnswers.filter((e) => e.isCorrect),
+  };
+};
