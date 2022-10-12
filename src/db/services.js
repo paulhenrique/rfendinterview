@@ -45,5 +45,14 @@ export const getQuizScore = (quiz) => {
     score: mappedAnswers.filter((e) => e.isCorrect).length,
     wrongAnswers: mappedAnswers.filter((e) => !e.isCorrect),
     correctAnswers: mappedAnswers.filter((e) => e.isCorrect),
+    questionsCorrectAndWrong: baseQuiz.questions.map((question) => ({
+      ...question,
+      answered: Boolean(
+        mappedAnswers.find((e) => e.idQuestion === question.idQuestion)
+      ),
+      isCorrect:
+        mappedAnswers.find((e) => e.idQuestion === question.idQuestion)
+          ?.isCorrect ?? false,
+    })),
   };
 };
