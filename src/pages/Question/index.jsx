@@ -12,6 +12,8 @@ import useQuestionStoreHandler from "./hooks/useQuestionStoreHandler";
 import { EndButtons } from "./components/EndButtons";
 import { useSelector } from "react-redux";
 import { TransitionGroup } from "react-transition-group";
+import "animate.css";
+
 const helpText =
   "Houve um problema ao mostrar o enunciado dessa questão ou ele está vazio, por favor contate o suporte";
 
@@ -66,7 +68,12 @@ const Question = () => {
   const questionAnswerValue = getQuestionValue();
 
   return (
-    <Box display="flex" flexDirection="column" gap="10px">
+    <Box
+      display="flex"
+      className="animate__animated animate__fadeInUp"
+      flexDirection="column"
+      gap="10px"
+    >
       <Typography element="h2" variant="h6">
         Questão {currentQuestionIndex + 1} | Quiz {quizTitle}
       </Typography>

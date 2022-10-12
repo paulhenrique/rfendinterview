@@ -8,12 +8,17 @@ import { Link } from "react-router-dom";
  * @returns
  */
 const Home = () => {
-  // TODO: Criar método que retorne os quizzes e coloque na tela
   return (
     <>
-      <Box display="flex" flexDirection="column" gap="20px">
-        {Quizzes.Quizzes.map(({ title, questions }) => (
+      <Box
+        className="animate__animated animate__fadeInUp"
+        display="flex"
+        flexDirection="column"
+        gap="20px"
+      >
+        {Quizzes.Quizzes.map(({ title, questions }, i) => (
           <Button
+            key={i}
             component={Link}
             to={`/questao/${questions[0]?.idQuestion}`}
             variant="contained"

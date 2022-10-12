@@ -4,12 +4,14 @@ import { useSelector } from "react-redux";
 import { getQuizScore } from "../../db/services";
 import EmptyImg from "@/assets/empty.svg";
 import { Link } from "react-router-dom";
+import "animate.css";
 
 const Score = () => {
   const { realizedQuizes } = useSelector((state) => state.user);
   if (!realizedQuizes.length) {
     return (
       <Box
+        className="animate__animated animate__fadeInUp"
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -31,6 +33,7 @@ const Score = () => {
 
   return (
     <Box
+      className="animate__animated animate__fadeInUp"
       sx={{
         display: "flex",
         flexDirection: "column",
