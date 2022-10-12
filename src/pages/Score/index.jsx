@@ -1,31 +1,15 @@
-import { Box, Button, Paper, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { getQuizScore } from "../../db/services";
-import EmptyImg from "@/assets/empty.svg";
-import { Link } from "react-router-dom";
 import "animate.css";
+import EmptyState from "./components/EmptyState";
+import QuizCard from "./components/QuizCard";
 
 const Score = () => {
   const { realizedQuizes } = useSelector((state) => state.user);
   if (!realizedQuizes.length) {
-    return (
-      <Box
-        className="animate__animated animate__fadeInUp"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "20px",
-        }}
-      >
-        <img src={EmptyImg} width="200px" />
-        <Typography>Você ainda não possui histórico</Typography>
-        <Button to="/" component={Link}>
-          Ver quizzes
-        </Button>
-      </Box>
-    );
+    return <EmptyState />;
   }
 
   const quizesWithScore = realizedQuizes.map((q) => getQuizScore(q));
@@ -39,6 +23,7 @@ const Score = () => {
         flexDirection: "column",
         justifyContent: "center",
         gap: 2,
+        pb: 15,
       }}
     >
       <Box>
@@ -51,16 +36,7 @@ const Score = () => {
         </Typography>
       </Box>
       {quizesWithScore.map((quiz) => (
-        <Paper key={quiz.quiz.id} sx={{ width: "100%", p: "10px" }}>
-          <Typography variant="h6">{quiz.quiz.title}</Typography>
-          <Typography variant="caption">Pontuação: {quiz.score} | </Typography>
-          <Typography variant="caption">
-            Perguntas: {quiz.quiz.questions.length} |{" "}
-          </Typography>
-          <Typography variant="caption">
-            Completo: {quiz.complete ? "Sim" : "Não"}
-          </Typography>
-        </Paper>
+        <QuizCard quiz={quiz} key={quiz.quiz.id} />
       ))}
     </Box>
   );
