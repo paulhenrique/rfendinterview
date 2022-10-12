@@ -19,7 +19,7 @@ export const EndButtons = () => {
           to={`/questao/${previousQuestion}`}
           variant="contained"
         >
-          Questão anterior
+          Anterior
         </Button>
       </Collapse>
       <Collapse in={Boolean(nextQuestion)}>
@@ -28,7 +28,7 @@ export const EndButtons = () => {
           to={`/questao/${nextQuestion}`}
           variant="contained"
         >
-          Próxima Questão
+          Próxima
         </Button>
       </Collapse>
     </Box>

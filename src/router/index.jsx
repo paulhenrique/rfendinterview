@@ -12,7 +12,7 @@ const Router = ({ excedent }) => {
       {excedent}
       <Routes>
         <Route path="/questao/:id" element={<Question />} />
-        <Route path="/score" element={<Score />} />
+        <Route path="/historico" element={<Score />} />
         <Route path="/" element={<Home />} exact />
       </Routes>
     </BrowserRouter>
