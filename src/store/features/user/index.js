@@ -5,6 +5,7 @@ const initialState = {
   name: "exampleName",
   score: "",
   realizedQuizes: [],
+  search: "",
 };
 
 export const userSlice = createSlice({
@@ -14,6 +15,11 @@ export const userSlice = createSlice({
     registerScore: (state, action) => {
       return produce(state, (draft) => {
         draft.score = action.payload;
+      });
+    },
+    updateSearch: (state, action) => {
+      return produce(state, (draft) => {
+        draft.search = action.payload;
       });
     },
     registerQuizAnswer: (state, action) => {
@@ -55,6 +61,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { registerScore, registerQuizAnswer } = userSlice.actions;
+export const { registerScore, registerQuizAnswer, updateSearch } =
+  userSlice.actions;
 
 export default userSlice.reducer;

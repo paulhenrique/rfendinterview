@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const NotFound = () => {
   return (
     <Box
+      className="animate__animated animate__fadeInUp"
       display="flex"
       justifyContent="center"
       alignItems="center"
