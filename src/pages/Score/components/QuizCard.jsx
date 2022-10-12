@@ -26,9 +26,14 @@ const centeredFlexStyle = {
 };
 
 const QuizCard = ({ quiz }) => {
-  const [openInfo, setOpenInfo] = useState(false);
+  const params = new URL(document.location).searchParams;
+  const selectedQuiz = params.get("selectedQuiz");
+  const quizId = "quizCard" + quiz.quiz.id;
+  const [openInfo, setOpenInfo] = useState(selectedQuiz === quiz.quiz.id);
+
   return (
     <Paper
+      id={quizId}
       sx={{
         width: "100%",
         p: "32px",

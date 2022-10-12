@@ -84,6 +84,7 @@ const AppBarNoMui = () => {
         </Box>
       </AppBar>
       <SwipeableDrawer
+        onOpen={() => setIsDrawerOpen(true)}
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
       >

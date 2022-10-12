@@ -15,6 +15,7 @@ export const EndButtons = () => {
   const allQuestionsAnswered =
     realizedQuizes.find((item) => id === item.idQuiz).answers.length ===
     questions.length;
+
   return (
     <Box
       sx={{
@@ -49,7 +50,7 @@ export const EndButtons = () => {
                 color={"success"}
                 disabled={!allQuestionsAnswered}
                 component={Link}
-                to={`/historico/`}
+                to={encodeURI(`/historico?selectedQuiz=${id}`)}
                 variant="contained"
               >
                 Finalizar
