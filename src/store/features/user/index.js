@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { produce } from "immer";
 
 const initialState = {
-  name: "exampleName",
+  name: "",
   score: "",
   realizedQuizes: [],
   search: "",
@@ -58,10 +58,19 @@ export const userSlice = createSlice({
         draft.realizedQuizes[quizIndex].answers.push(answerQuestion);
       });
     },
+    updateUserName: (state, action) => {
+      return produce(state, (draft) => {
+        draft.name = action.payload;
+      });
+    },
   },
 });
 
-export const { registerScore, registerQuizAnswer, updateSearch } =
-  userSlice.actions;
+export const {
+  registerScore,
+  registerQuizAnswer,
+  updateSearch,
+  updateUserName,
+} = userSlice.actions;
 
 export default userSlice.reducer;
