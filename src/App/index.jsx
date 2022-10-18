@@ -7,6 +7,7 @@ import { Box, CssBaseline } from "@mui/material";
 import AppBar from "@/components/AppBar";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
+import ClearUserHandler from "../components/ClearUserHandler";
 
 const persistor = persistStore(store);
 
@@ -16,6 +17,7 @@ const App = () => {
       <Provider store={store}>
         <PersistGate persistor={persistor} loading={null}>
           <CssBaseline />
+          <ClearUserHandler />
           <Box
             sx={{
               maxWidth: {
