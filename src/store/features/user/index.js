@@ -6,6 +6,7 @@ const initialState = {
   score: "",
   realizedQuizes: [],
   search: "",
+  preferDark: true,
 };
 
 export const userSlice = createSlice({
@@ -63,6 +64,11 @@ export const userSlice = createSlice({
         draft.name = action.payload;
       });
     },
+    updatePreferDark: (state) => {
+      return produce(state, (draft) => {
+        draft.preferDark = !draft.preferDark;
+      });
+    },
   },
 });
 
@@ -71,6 +77,7 @@ export const {
   registerQuizAnswer,
   updateSearch,
   updateUserName,
+  updatePreferDark,
 } = userSlice.actions;
 
 export default userSlice.reducer;

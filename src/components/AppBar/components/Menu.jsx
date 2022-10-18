@@ -6,7 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { Clear, History, Home } from "@mui/icons-material";
+import { Clear, History, Home, SwitchAccount } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { ListItemStyle } from "../style";
 import { appEmitter, EventTypes } from "@/config/events";
@@ -42,6 +42,18 @@ export const Menu = ({ onClose }) => {
               <Clear />
             </ListItemIcon>
             <ListItemText primary="Limpar Tudo" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem sx={ListItemStyle}>
+          <ListItemButton
+            onClick={() => {
+              appEmitter.emit(EventTypes.CHANGE_THEME);
+            }}
+          >
+            <ListItemIcon>
+              <SwitchAccount />
+            </ListItemIcon>
+            <ListItemText primary="Alterar Cores" />
           </ListItemButton>
         </ListItem>
       </List>

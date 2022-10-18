@@ -25,7 +25,7 @@ const Question = () => {
     id,
   } = useSelector((state) => state.quiz);
 
-  const { realizedQuizes } = useSelector((state) => state.user);
+  const { realizedQuizes, preferDark } = useSelector((state) => state.user);
 
   const { handleUpdateQuestionAnswer } = useQuestionStoreHandler();
 
@@ -53,13 +53,15 @@ const Question = () => {
 
   const questionAlternativeStyle = (selected) => ({
     my: "10px",
-    backgroundColor: selected ? "#f7f7bb" : "#f7f7f7",
+    backgroundColor: preferDark ? "#2e2e2e" : "#f7f7f7",
     borderRadius: "10px",
+    filter: selected ? "brightness(0.9)" : "",
     py: "10px",
     pl: "10px",
     transition: "all 0.2s ease-in-out",
     "&:hover": {
-      backgroundColor: "#f7f7bb",
+      filter: "brightness(0.9)",
+      // backgroundColor: "#f7f7bb",
     },
     flex: "1",
     width: "100%",

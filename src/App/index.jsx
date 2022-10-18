@@ -8,6 +8,8 @@ import AppBar from "@/components/AppBar";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import ClearUserHandler from "../components/ClearUserHandler";
+import ChangeThemeMotor from "../components/ChangeThemeMotor";
+import ChangeThemeHandler from "../components/ChangeThemeHandler";
 
 const persistor = persistStore(store);
 
@@ -16,21 +18,24 @@ const App = () => {
     <SnackbarProvider>
       <Provider store={store}>
         <PersistGate persistor={persistor} loading={null}>
-          <CssBaseline />
-          <ClearUserHandler />
-          <Box
-            sx={{
-              maxWidth: {
-                md: "50%",
-                sm: "70%",
-                xs: "90%",
-              },
-              pt: "104px",
-              mx: "auto",
-            }}
-          >
-            <Router excedent={<AppBar />} />
-          </Box>
+          <ChangeThemeMotor>
+            <CssBaseline />
+            <ClearUserHandler />
+            <ChangeThemeHandler />
+            <Box
+              sx={{
+                maxWidth: {
+                  md: "50%",
+                  sm: "70%",
+                  xs: "90%",
+                },
+                pt: "104px",
+                mx: "auto",
+              }}
+            >
+              <Router excedent={<AppBar />} />
+            </Box>
+          </ChangeThemeMotor>
         </PersistGate>
       </Provider>
     </SnackbarProvider>
