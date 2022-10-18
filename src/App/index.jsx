@@ -31,6 +31,7 @@ const App = () => {
                 },
                 pt: "104px",
                 mx: "auto",
+                minHeight: "100vh",
               }}
             >
               <Router excedent={<AppBar />} />
