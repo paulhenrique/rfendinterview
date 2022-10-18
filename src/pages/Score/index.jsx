@@ -6,6 +6,8 @@ import "animate.css";
 import EmptyState from "./components/EmptyState";
 import QuizCard from "./components/QuizCard";
 
+const formatToPercent = (value) => `${(value * 100).toFixed(2)}%`;
+
 const Score = () => {
   const { realizedQuizes } = useSelector((state) => state.user);
   if (!realizedQuizes.length) {
@@ -31,8 +33,8 @@ const Score = () => {
           Histórico
         </Typography>
         <Typography variant="body2" sx={{ mt: 0, pt: 0 }}>
-          Quantidade de quizzes realizados: {realizedQuizes.length}; Média de
-          acertos: {totalScore / realizedQuizes.length}
+          Quantidade de quizzes realizados: {realizedQuizes.length}; Acertos:{" "}
+          {formatToPercent(totalScore / realizedQuizes.length)}
         </Typography>
       </Box>
       {quizesWithScore.map((quiz) => (
