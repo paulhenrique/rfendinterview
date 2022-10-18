@@ -13,7 +13,7 @@ export const EndButtons = () => {
   const nextQuestion = questions[right]?.idQuestion;
 
   const allQuestionsAnswered =
-    realizedQuizes.find((item) => id === item.idQuiz).answers.length ===
+    realizedQuizes?.find((item) => id === item.idQuiz)?.answers?.length ===
     questions.length;
 
   return (
