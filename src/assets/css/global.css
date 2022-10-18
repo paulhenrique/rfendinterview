@@ -1,0 +1,4 @@
+.swal2-show,
+.swal2-backdrop-show {
+  z-index: 99999999;
+}
