@@ -2,6 +2,7 @@ import {
   AppBar,
   Avatar,
   Box,
+  Collapse,
   IconButton,
   Menu,
   MenuItem,
@@ -10,11 +11,11 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Home } from "@mui/icons-material";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import ContentDrawer from "./components/ContentDrawer";
 import { ToolbarStyle } from "./style";
+import { HomeButton } from "./components/HomeButton";
+import { useSelector } from "react-redux";
 
 const AppBarNoMui = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -24,28 +25,15 @@ const AppBarNoMui = () => {
   };
 
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-  const { pathname } = useLocation();
+
+  const { name = "" } = useSelector((state) => state.user);
+
   return (
-    <>
+    <Collapse in={name}>
       <AppBar position="fixed">
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <Toolbar sx={ToolbarStyle}>
-            {pathname !== "/" ? (
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                sx={{ color: "white" }}
-                component={Link}
-                to="/"
-              >
-                <Home />
-              </IconButton>
-            ) : (
-              <span></span>
-            )}
-
+            <HomeButton />
             <Tooltip title="Abrir Menu">
               <IconButton
                 size="large"
@@ -54,7 +42,7 @@ const AppBarNoMui = () => {
                 aria-haspopup="true"
                 onClick={() => setIsDrawerOpen(true)}
               >
-                <Avatar src="https://robohash.org/rfinterviewapp" />
+                <Avatar src={`https://robohash.org/${name}`} />
               </IconButton>
             </Tooltip>
           </Toolbar>
@@ -90,7 +78,7 @@ const AppBarNoMui = () => {
       >
         <ContentDrawer />
       </SwipeableDrawer>
-    </>
+    </Collapse>
   );
 };
 
