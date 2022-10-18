@@ -6,16 +6,17 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { History, Home } from "@mui/icons-material";
+import { Clear, History, Home } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { ListItemStyle } from "../style";
+import { appEmitter, EventTypes } from "@/config/events";
 
-export const Menu = () => {
+export const Menu = ({ onClose }) => {
   return (
     <Box>
       <List>
         <ListItem sx={ListItemStyle}>
-          <ListItemButton component={Link} to="/">
+          <ListItemButton onClick={onClose} component={Link} to="/">
             <ListItemIcon>
               <Home />
             </ListItemIcon>
@@ -23,11 +24,24 @@ export const Menu = () => {
           </ListItemButton>
         </ListItem>
         <ListItem sx={ListItemStyle}>
-          <ListItemButton component={Link} to="/historico">
+          <ListItemButton onClick={onClose} component={Link} to="/historico">
             <ListItemIcon>
               <History />
             </ListItemIcon>
             <ListItemText primary="Histórico" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem sx={ListItemStyle}>
+          <ListItemButton
+            onClick={() => {
+              onClose();
+              appEmitter.emit(EventTypes.CLEAR_USER);
+            }}
+          >
+            <ListItemIcon>
+              <Clear />
+            </ListItemIcon>
+            <ListItemText primary="Limpar Tudo" />
           </ListItemButton>
         </ListItem>
       </List>

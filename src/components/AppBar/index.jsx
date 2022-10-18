@@ -76,7 +76,7 @@ const AppBarNoMui = () => {
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
       >
-        <ContentDrawer />
+        <ContentDrawer onClose={() => setIsDrawerOpen(false)} />
       </SwipeableDrawer>
     </Collapse>
   );

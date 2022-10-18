@@ -7,12 +7,12 @@ const baseStyle = {
   p: 0,
 };
 
-export const ContentDrawer = () => {
+export const ContentDrawer = ({ onClose }) => {
   return (
     <>
       <Box xs={baseStyle} role="presentation">
         <UserInformation />
-        <Menu />
+        <Menu onClose={onClose} />
       </Box>
     </>
   );
