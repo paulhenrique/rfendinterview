@@ -1,0 +1,6 @@
+{
+  "display": "standalone",
+  "background_color": "#fff",
+  "start_url": ".",
+  "description": "Roadmap Frontend Interview."
+}
