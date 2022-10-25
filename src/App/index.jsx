@@ -10,6 +10,7 @@ import { persistStore } from "redux-persist";
 import ClearUserHandler from "../components/ClearUserHandler";
 import ChangeThemeMotor from "../components/ChangeThemeMotor";
 import ChangeThemeHandler from "../components/ChangeThemeHandler";
+import ShareHandler from "../components/ShareHandler";
 
 const persistor = persistStore(store);
 
@@ -22,6 +23,7 @@ const App = () => {
             <CssBaseline />
             <ClearUserHandler />
             <ChangeThemeHandler />
+            <ShareHandler />
             <Box
               sx={{
                 maxWidth: {

@@ -6,7 +6,13 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { Clear, History, Home, SwitchAccount } from "@mui/icons-material";
+import {
+  Clear,
+  History,
+  Home,
+  Share,
+  SwitchAccount,
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { ListItemStyle } from "../style";
 import { appEmitter, EventTypes } from "@/config/events";
@@ -54,6 +60,18 @@ export const Menu = ({ onClose }) => {
               <SwitchAccount />
             </ListItemIcon>
             <ListItemText primary="Alterar Cores" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem sx={ListItemStyle}>
+          <ListItemButton
+            onClick={() => {
+              appEmitter.emit(EventTypes.SHARE_APP);
+            }}
+          >
+            <ListItemIcon>
+              <Share />
+            </ListItemIcon>
+            <ListItemText primary="Compartilhar" />
           </ListItemButton>
         </ListItem>
       </List>
