@@ -25,8 +25,8 @@ export const UserInformation = () => {
               {name}
             </Typography>
             <Typography variant="caption" component="p" sx={{ mt: 0, pt: 0 }}>
-              Quizzes realizados: {countRealizedQuizes}; Acertos:{" "}
-              {countHitsInPercent}
+              Quizzes realizados: {countRealizedQuizes || "--"}; Acertos:{" "}
+              {countHitsInPercent || "--"}
             </Typography>
           </Box>
           <CircularProgressWithProgress

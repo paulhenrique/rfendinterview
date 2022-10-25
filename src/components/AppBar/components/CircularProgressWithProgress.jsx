@@ -1,5 +1,5 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
-import { green, orange, red, yellow } from "@mui/material/colors";
+import { green, grey, orange, red, yellow } from "@mui/material/colors";
 import React from "react";
 import { getPercent } from "@/pages/Score/components/QuizCard";
 
@@ -9,6 +9,7 @@ const CircularProgressWithProgress = ({ score = 0, total = 0 }) => {
   console.log(score, total);
 
   const getProgressColor = () => {
+    if (progressValue === 0) return grey[400];
     if (progressValue < 30) return red[500];
     if (progressValue < 50) return orange[500];
     if (progressValue < 70) return yellow[500];
