@@ -3,7 +3,6 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import {
   Box,
   Button,
-  CircularProgress,
   Collapse,
   Paper,
   Tooltip,
@@ -11,11 +10,11 @@ import {
 } from "@mui/material";
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import { useState } from "react";
-import { green } from "@mui/material/colors";
 import { Link } from "react-router-dom";
 import QuestionItem from "./QuestionItem";
+import CircularProgressWithProgress from "@/components/AppBar/components/CircularProgressWithProgress";
 // função que transforma o valor da pontuação em um valor percentual
-const getPercent = (score, total) => {
+export const getPercent = (score, total) => {
   return Math.round((score / total) * 100);
 };
 
@@ -57,22 +56,10 @@ const QuizCard = ({ quiz }) => {
             </Typography>
           </Box>
         </Box>
-        <Box
-          sx={{
-            ...centeredFlexStyle,
-            justifyContent: "center",
-          }}
-        >
-          <CircularProgress
-            variant="determinate"
-            size={80}
-            sx={{ color: green["600"] }}
-            value={getPercent(quiz.score, quiz.quiz.questions.length)}
-          />
-          <Typography sx={{ position: "absolute" }}>
-            {`${quiz.score}/${quiz.quiz.questions.length}`}
-          </Typography>
-        </Box>
+        <CircularProgressWithProgress
+          score={quiz.score}
+          total={quiz.quiz.questions.length}
+        />
       </Box>
       <Box sx={centeredFlexStyle}>
         <Tooltip title="Voltar a responder o quiz">
