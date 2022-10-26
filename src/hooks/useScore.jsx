@@ -23,14 +23,7 @@ export const useScore = () => {
   );
   const countRealizedQuizes = realizedQuizes?.length;
   const countHitsInPercent = formatToPercent(totalScore / countRealizedQuizes);
-  console.log({
-    quizesWithScore,
-    totalScore,
-    countRealizedQuizes,
-    countHitsInPercent,
-    passedQuestions,
-    correctAnswers,
-  });
+
   return {
     totalScore,
     quizesWithScore,
