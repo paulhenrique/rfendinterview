@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 
 const ClearUserHandler = () => {
   const handleClearUser = () => {
-    console.log("alo mundo");
     Swal.fire({
       title: "Tem certeza?",
       text: "Isso irá apagar todo o seu histórico de quizzes e resultados!",

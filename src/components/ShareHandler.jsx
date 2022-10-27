@@ -1,4 +1,5 @@
 import { appEmitter, EventTypes } from "@/config/events";
+
 const ShareHandler = () => {
   appEmitter.addListener(EventTypes.SHARE_APP, () => {
     if (navigator.share) {

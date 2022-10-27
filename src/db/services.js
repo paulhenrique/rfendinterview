@@ -1,4 +1,4 @@
-import QuizzesDB from "@/db/Quizzes.json";
+import QuizzesDB from "./Quizzes.json";
 
 export const getSelectedQuestion = (selectedQuiz, id) => [
   selectedQuiz?.questions.find((question) => question.idQuestion === id),

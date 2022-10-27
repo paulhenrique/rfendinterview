@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import user from "@/store/features/user";
-import quiz from "@/store/features/quiz";
+import user from "./features/user";
+import quiz from "./features/quiz";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 
