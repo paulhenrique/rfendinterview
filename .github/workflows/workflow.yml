@@ -1,4 +1,4 @@
-name: Run Workflow
+name: Testes Unitários
 
 on:
   push:
