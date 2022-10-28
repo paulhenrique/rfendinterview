@@ -3,7 +3,7 @@ import { green, grey, orange, red, yellow } from "@mui/material/colors";
 import React from "react";
 import { getPercent } from "../../../pages/Score/components/QuizCard";
 
-const CircularProgressWithProgress = ({ score = 0, total = 0 }) => {
+const CircularProgressWithProgress = ({ score = 0, total = 0, ...props }) => {
   const calculatedPercent = getPercent(score, total);
   const progressValue = calculatedPercent || 0;
   console.log(score, total);
@@ -23,6 +23,7 @@ const CircularProgressWithProgress = ({ score = 0, total = 0 }) => {
         justifyContent: "center",
         alignItems: "center",
       }}
+      {...props}
     >
       <CircularProgress
         variant="determinate"

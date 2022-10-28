@@ -6,9 +6,11 @@ import CircularProgressWithProgress from "./CircularProgressWithProgress";
 import { render, screen } from "@testing-library/react";
 
 describe("Circular Progress With Progress", () => {
-  it("should render correctly", () => {
-    const { container } = render(<CircularProgressWithProgress value={50} />);
-    expect(container).toMatchSnapshot();
+  it("should render correctly", async () => {
+    render(
+      <CircularProgressWithProgress value={50} data-testid="circularProgress" />
+    );
+    expect(await screen.findByTestId("circularProgress"));
   });
 
   it("should value passed to circular progress to be in screen", async () => {
