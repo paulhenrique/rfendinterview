@@ -12,7 +12,7 @@ import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import QuestionItem from "./QuestionItem";
-import CircularProgressWithProgress from "@/components/AppBar/components/CircularProgressWithProgress";
+import CircularProgressWithProgress from "../../../components/AppBar/components/CircularProgressWithProgress";
 // função que transforma o valor da pontuação em um valor percentual
 export const getPercent = (score, total) => {
   return Math.round((score / total) * 100);

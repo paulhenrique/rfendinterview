@@ -1,7 +1,7 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
 import { green, grey, orange, red, yellow } from "@mui/material/colors";
 import React from "react";
-import { getPercent } from "@/pages/Score/components/QuizCard";
+import { getPercent } from "../../../pages/Score/components/QuizCard";
 
 const CircularProgressWithProgress = ({ score = 0, total = 0 }) => {
   const calculatedPercent = getPercent(score, total);
