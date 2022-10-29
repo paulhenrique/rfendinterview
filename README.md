@@ -14,6 +14,8 @@
 
 > Simple quiz app based on frontend topics developed with ReactJS, MaterialUI, Redux, Vite and Jest to tests.
 
+![Gif](https://media1.giphy.com/media/CkG9LPucKWvOCIFZFP/giphy.gif)
+
 ### 🏠 [Homepage](https://rfendinterview.netlify.app/)
 
 ### ✨ [Demo](https://rfendinterview.netlify.app/)
