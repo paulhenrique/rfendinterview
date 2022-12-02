@@ -90,7 +90,7 @@
         {
           "idQuestion": "js3",
           "description": "Para finalizar o loop atual e prosseguir para a próxima iteração, usamos:",
-          "correctAnswer": 2,
+          "correctAnswer": 1,
           "options": [
             "exit;",
             "break;",
