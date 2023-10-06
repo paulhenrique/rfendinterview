@@ -1,5 +1,4 @@
 import React from "react";
-import Quizzes from "@/db/Quizzes.json";
 import { Button, Box, TextField, Collapse, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { matchSorter } from "match-sorter";
@@ -20,13 +19,9 @@ const ListQuizzes = () => {
     dispatch(updateSearch(e));
   };
 
-  const { data, isLoading } = useQuizzes();
+  const { data = [], isLoading } = useQuizzes(search);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  const sortedList = matchSorter(data, search, {
+  const sortedList = matchSorter(data ?? [], search, {
     keys: ["title"],
   });
 
@@ -49,9 +44,12 @@ const ListQuizzes = () => {
           value={search}
           onChange={({ target: { value } }) => setSearch(value)}
         />
-        <TransitionGroup>
-          {(search ? sortedList : Quizzes.Quizzes).map(
-            ({ title, questions }) => (
+        <Collapse in={isLoading}>
+          <Loading />
+        </Collapse>
+        <Collapse in={!isLoading}>
+          <TransitionGroup>
+            {(search ? sortedList : data).map(({ title, questions }) => (
               <Collapse key={title} sx={{ width: "100%" }}>
                 <Button
                   sx={{ width: "100%", my: 1 }}
@@ -62,9 +60,9 @@ const ListQuizzes = () => {
                   {title}
                 </Button>
               </Collapse>
-            )
-          )}
-        </TransitionGroup>
+            ))}
+          </TransitionGroup>
+        </Collapse>
       </Box>
     </>
   );

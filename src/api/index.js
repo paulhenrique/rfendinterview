@@ -10,9 +10,11 @@ export const apiServices = {
       return { data: { data: [] } };
     }
   },
-  getQuizzes: async () => {
+  getQuizzes: (search) => async () => {
     try {
-      const { data } = await axiosInstance.get(endpoints.quizzes);
+      const { data } = await axiosInstance.get(
+        `${endpoints.quizzes}?search=${search}`
+      );
       return data?.data;
     } catch {
       return { data: { data: [] } };

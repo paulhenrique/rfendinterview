@@ -20,6 +20,7 @@ const persistor = persistStore(store);
 const queryClient = new QueryClient();
 
 import { createServer } from "miragejs";
+import { matchSorter } from "match-sorter";
 
 let server = createServer({
   namespace: "/api",
@@ -29,8 +30,20 @@ server.get("/marvel-heroes-names", {
   data: ["Steve Rogers", "Tony Stark", "Natasha Romanova", "Jennifer Walters"],
 });
 
-server.get("/quizzes", {
-  data: Quizzes.Quizzes,
+server.get("/quizzes", (_e, request) => {
+  let data = Quizzes.Quizzes;
+
+  const search = request?.queryParams?.search;
+
+  if (search) {
+    data = matchSorter(data, search, {
+      keys: ["title"],
+    });
+  }
+
+  return {
+    data,
+  };
 });
 
 const App = () => {

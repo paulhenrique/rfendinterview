@@ -7,9 +7,9 @@ const QUERY_KEY = "quizzes";
  * @description Hook para buscar os quizzes
  * @returns {import("@tanstack/react-query").UseQueryResult}
  */
-export const useQuizzes = () => {
-  const getService = apiServices.getQuizzes;
-  return useQuery([QUERY_KEY], getService);
+export const useQuizzes = (search) => {
+  const getService = apiServices.getQuizzes(search);
+  return useQuery([QUERY_KEY, search], getService);
 };
 
 export default useQuizzes;
