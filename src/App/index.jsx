@@ -11,34 +11,58 @@ import ClearUserHandler from "../components/ClearUserHandler";
 import ChangeThemeMotor from "../components/ChangeThemeMotor";
 import ChangeThemeHandler from "../components/ChangeThemeHandler";
 import ShareHandler from "../components/ShareHandler";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const persistor = persistStore(store);
+
+const queryClient = new QueryClient();
+
+import { createServer } from "miragejs";
+
+let server = createServer({
+  namespace: "/api",
+});
+
+server.get("/marvel-heroes-names", () => {
+  return {
+    data: [
+      "Steve Rogers",
+      "Tony Stark",
+      "Natasha Romanova",
+      "Jennifer Walters",
+    ],
+  };
+});
 
 const App = () => {
   return (
     <SnackbarProvider>
       <Provider store={store}>
         <PersistGate persistor={persistor} loading={null}>
-          <ChangeThemeMotor>
-            <CssBaseline />
-            <ClearUserHandler />
-            <ChangeThemeHandler />
-            <ShareHandler />
-            <Box
-              sx={{
-                maxWidth: {
-                  md: "50%",
-                  sm: "70%",
-                  xs: "90%",
-                },
-                pt: "104px",
-                mx: "auto",
-                minHeight: "100vh",
-              }}
-            >
-              <Router excedent={<AppBar />} />
-            </Box>
-          </ChangeThemeMotor>
+          <QueryClientProvider client={queryClient}>
+            <ChangeThemeMotor>
+              <CssBaseline />
+              <ClearUserHandler />
+              <ChangeThemeHandler />
+              <ShareHandler />
+              <Box
+                sx={{
+                  maxWidth: {
+                    md: "50%",
+                    sm: "70%",
+                    xs: "90%",
+                  },
+                  pt: "104px",
+                  mx: "auto",
+                  minHeight: "100vh",
+                }}
+              >
+                <Router excedent={<AppBar />} />
+              </Box>
+            </ChangeThemeMotor>
+            <ReactQueryDevtools />
+          </QueryClientProvider>
         </PersistGate>
       </Provider>
     </SnackbarProvider>
