@@ -6,6 +6,8 @@ import { matchSorter } from "match-sorter";
 import { TransitionGroup } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
 import { updateSearch } from "@/store/features/user";
+import useQuizzes from "@/api/hooks/useQuizzes";
+import Loading from "@/components/Loading";
 
 /**
  * Onde são listados os Quizzes
@@ -17,9 +19,17 @@ const ListQuizzes = () => {
   const setSearch = (e) => {
     dispatch(updateSearch(e));
   };
-  const sortedList = matchSorter(Quizzes.Quizzes, search, {
+
+  const { data, isLoading } = useQuizzes();
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  const sortedList = matchSorter(data, search, {
     keys: ["title"],
   });
+
   return (
     <>
       <Box
