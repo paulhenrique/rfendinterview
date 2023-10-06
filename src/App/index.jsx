@@ -13,6 +13,7 @@ import ChangeThemeHandler from "../components/ChangeThemeHandler";
 import ShareHandler from "../components/ShareHandler";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Quizzes from "@/db/Quizzes.json";
 
 const persistor = persistStore(store);
 
@@ -24,15 +25,12 @@ let server = createServer({
   namespace: "/api",
 });
 
-server.get("/marvel-heroes-names", () => {
-  return {
-    data: [
-      "Steve Rogers",
-      "Tony Stark",
-      "Natasha Romanova",
-      "Jennifer Walters",
-    ],
-  };
+server.get("/marvel-heroes-names", {
+  data: ["Steve Rogers", "Tony Stark", "Natasha Romanova", "Jennifer Walters"],
+});
+
+server.get("/quizzes", {
+  data: Quizzes.Quizzes,
 });
 
 const App = () => {
