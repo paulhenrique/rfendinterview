@@ -8,46 +8,53 @@ import {
 } from "@mui/material";
 import React from "react";
 import { goToNotFound } from "@/pages/NotFound";
-import useQuestionStoreHandler from "./hooks/useQuestionStoreHandler";
+import useQuestionStoreHandler, {
+  useQuestionGetter,
+} from "./hooks/useQuestionStoreHandler";
 import { EndButtons } from "./components/EndButtons";
 import { useSelector } from "react-redux";
 import { TransitionGroup } from "react-transition-group";
 import "animate.css";
+import Loading from "@/components/Loading";
 
 const helpText =
   "Houve um problema ao mostrar o enunciado dessa questão ou ele está vazio, por favor contate o suporte";
 
 const Question = () => {
-  const {
-    currentQuestion,
-    currentQuestionIndex,
-    title: quizTitle,
-    id,
-  } = useSelector((state) => state.quiz);
-
+  const { data: currentQuestion, isLoading } = useQuestionGetter();
+  const currentQuestionIndex = currentQuestion?.index ?? "";
+  const quizTitle = currentQuestion?.quizTitle ?? "";
+  const quizId = currentQuestion?.quizId ?? "";
   const { realizedQuizes, preferDark } = useSelector((state) => state.user);
 
   const { handleUpdateQuestionAnswer } = useQuestionStoreHandler();
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   if (!currentQuestion) {
     return goToNotFound();
   }
 
   const handleChangeSelectedOption = ({ target: { value } }) => {
-    handleUpdateQuestionAnswer(value);
+    handleUpdateQuestionAnswer(value, currentQuestion);
   };
 
   const getQuestionValue = () => {
-    const quizRealized = realizedQuizes?.find((quiz) => quiz.idQuiz === id);
+    const quizRealized = realizedQuizes?.find((quiz) => quiz.idQuiz === quizId);
+
     if (!quizRealized) {
       return null;
     }
     const questionRealized = quizRealized.answers.find(
       (question) => question.idQuestion === currentQuestion.idQuestion
     );
+
     if (!questionRealized) {
       return null;
     }
+
     return questionRealized.answer;
   };
 

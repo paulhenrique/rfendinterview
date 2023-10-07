@@ -1,38 +1,21 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  getSelectedQuizByQuestionId,
-  getSelectedQuestion,
-} from "@/db/services";
-import { setQuiz } from "@/store/features/quiz";
 import { registerQuizAnswer } from "../../../store/features/user";
+import useQuestions from "@/api/hooks/useQuestion";
+
+export const useQuestionGetter = () => {
+  const { id } = useParams();
+  return { ...useQuestions(id), id };
+};
 
 const useQuestionStoreHandler = () => {
-  const { id } = useParams();
   const dispatch = useDispatch();
-  const { currentQuestion, id: idQuiz } = useSelector((state) => state.quiz);
 
-  const setQuizBasedOnQuestionId = () => {
-    const selectedQuiz = getSelectedQuizByQuestionId(id);
-    const [currentQuestion, currentQuestionIndex] = getSelectedQuestion(
-      selectedQuiz,
-      id
-    );
-    dispatch(
-      setQuiz({ ...selectedQuiz, currentQuestionIndex, currentQuestion })
-    );
-  };
-
-  useEffect(() => {
-    setQuizBasedOnQuestionId();
-  }, [id]);
-
-  const handleUpdateQuestionAnswer = (answer) => {
+  const handleUpdateQuestionAnswer = (answer, currentQuestion) => {
     console.log(answer, currentQuestion);
     dispatch(
       registerQuizAnswer({
-        idQuiz,
+        idQuiz: currentQuestion.quizId,
         idQuestion: currentQuestion.idQuestion,
         answer,
       })

@@ -1,16 +1,15 @@
 import { Box, Button, Collapse, Tooltip } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useQuestionGetter } from "../hooks/useQuestionStoreHandler";
 
 export const EndButtons = () => {
-  const { currentQuestionIndex, questions, id } = useSelector(
-    (state) => state.quiz
-  );
+  const { questions, id } = useSelector((state) => state.quiz);
   const { realizedQuizes } = useSelector((state) => state.user);
-  const left = currentQuestionIndex - 1;
-  const right = currentQuestionIndex + 1;
-  const previousQuestion = questions[left]?.idQuestion;
-  const nextQuestion = questions[right]?.idQuestion;
+
+  const { data: question } = useQuestionGetter();
+  const previousQuestion = question?.prevQuestionId;
+  const nextQuestion = question?.nextQuestionId;
 
   const allQuestionsAnswered =
     realizedQuizes?.find((item) => id === item.idQuiz)?.answers?.length ===
