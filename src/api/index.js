@@ -20,6 +20,16 @@ export const apiServices = {
       return { data: { data: [] } };
     }
   },
+  getQuestion: (questionId) => async () => {
+    try {
+      const { data } = await axiosInstance.get(
+        `${endpoints.question.replace(":questionId", questionId)}`
+      );
+      return data?.data;
+    } catch {
+      return { data: { data: [] } };
+    }
+  },
 };
 
 export default apiServices;

@@ -4,6 +4,7 @@
 export const endpoints = {
   marvelHeroesNames: "/marvel-heroes-names",
   quizzes: "/quizzes",
+  question: "/question/:questionId",
 };
 
 export default endpoints;
