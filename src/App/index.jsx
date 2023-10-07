@@ -46,6 +46,38 @@ server.get("/quizzes", (_e, request) => {
   };
 });
 
+server.get("/question/:questionId", (_e, request) => {
+  const questionId = request?.params?.questionId;
+  const allQuestions = Quizzes.Quizzes.flatMap(({ questions, id, title }) =>
+    questions.map((question, index) => ({
+      ...question,
+      index,
+      quizId: id,
+      quizTitle: title,
+      nextQuestionId:
+        index + 1 > questions.length
+          ? questions[0]?.idQuestion
+          : questions[index + 1]?.idQuestion,
+      prevQuestionId:
+        index - 1 < 0
+          ? questions[questions.length - 1]?.idQuestion
+          : questions[index - 1]?.idQuestion,
+    }))
+  );
+
+  return {
+    data: allQuestions.find(
+      (question) => question.idQuestion === questionId
+    ) ?? {
+      title: "Pergunta não encontrada",
+      description: "Pergunta não encontrada",
+      questionId,
+      allQuestions,
+      alternatives: [],
+    },
+  };
+});
+
 const App = () => {
   return (
     <SnackbarProvider>
