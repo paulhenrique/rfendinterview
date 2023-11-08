@@ -19,16 +19,21 @@ export const getQuestionId = (selectedQuiz) => (index) => {
   return selectedQuiz.questions[index]?.idQuestion;
 };
 
+const buildQuiz = () => ({
+  questions: [],
+});
+
 export const getQuizById = (id) => {
   const { Quizzes } = QuizzesDB;
-  return Quizzes.find((quiz) => quiz.id === id);
+  const foundQuiz = Quizzes?.find((quiz) => quiz.id === id);
+  return foundQuiz ?? buildQuiz();
 };
 
 export const getQuizScore = (quiz) => {
   const baseQuiz = getQuizById(quiz.idQuiz);
   const { answers } = quiz;
   const mappedAnswers = answers.map((answer) => {
-    const completeQuestion = baseQuiz.questions.find(
+    const completeQuestion = (baseQuiz?.questions ?? [])?.find(
       (e) => e.idQuestion === answer.idQuestion
     );
     return {
