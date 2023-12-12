@@ -39,19 +39,19 @@ describe("Services", () => {
 
   it('Should getQuizById return a quiz with the "id" property equals to the "id" parameter', () => {
     const id = QuizzesDB.Quizzes[0].id;
-    const result = getQuizById(id);
+    const result = getQuizById(QuizzesDB.Quizzes)(id);
     expect(result.id).toBe(id);
   });
 
   it('Should getQuizById return a quiz with the "title" property equals to the "title" parameter', () => {
     const title = QuizzesDB.Quizzes[0].title;
-    const result = getQuizById(QuizzesDB.Quizzes[0].id);
+    const result = getQuizById(QuizzesDB.Quizzes)(QuizzesDB.Quizzes[0].id);
     expect(result.title).toBe(title);
   });
 
   it('Should getQuizById return a quiz with the "questions" property equals to the "questions" parameter', () => {
     const questions = QuizzesDB.Quizzes[0].questions;
-    const result = getQuizById(QuizzesDB.Quizzes[0].id);
+    const result = getQuizById(QuizzesDB.Quizzes)(QuizzesDB.Quizzes[0].id);
     expect(result.questions).toBe(questions);
   });
 
