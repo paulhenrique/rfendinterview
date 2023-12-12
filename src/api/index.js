@@ -25,7 +25,10 @@ export const apiServices = {
       const { data } = await axiosInstance.get(
         `${endpoints.question.replace(":questionId", questionId)}`
       );
-      return data?.data;
+      return {
+        ...data?.data,
+        quizId: data?.data.quizId.split(".")[0],
+      };
     } catch {
       return { data: { data: [] } };
     }

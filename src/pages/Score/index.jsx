@@ -5,6 +5,16 @@ import QuizCard from "./components/QuizCard";
 import { useScore } from "@/hooks/useScore";
 import EmptyState from "@/pages/Score/components/EmptyState";
 import { useSelector } from "react-redux";
+import useQuizzes from "@/api/hooks/useQuizzes";
+
+const EnvolveScore = () => {
+  const { isLoading, data } = useQuizzes("");
+  if (isLoading || !data?.length) {
+    return null;
+  }
+
+  return <Score />;
+};
 
 const Score = () => {
   const { countHitsInPercent, quizesWithScore, countRealizedQuizes } =
@@ -42,4 +52,4 @@ const Score = () => {
   );
 };
 
-export default Score;
+export default EnvolveScore;

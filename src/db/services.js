@@ -23,19 +23,19 @@ const buildQuiz = () => ({
   questions: [],
 });
 
-export const getQuizById = (id) => {
-  const { Quizzes } = QuizzesDB;
+export const getQuizById = (Quizzes) => (id) => {
   const foundQuiz = Quizzes?.find((quiz) => quiz.id === id);
   return foundQuiz ?? buildQuiz();
 };
 
-export const getQuizScore = (quiz) => {
-  const baseQuiz = getQuizById(quiz.idQuiz);
+export const getQuizScore = (Quizzes) => (quiz) => {
+  const baseQuiz = getQuizById(Quizzes)(quiz.idQuiz);
   const { answers } = quiz;
   const mappedAnswers = answers.map((answer) => {
     const completeQuestion = (baseQuiz?.questions ?? [])?.find(
-      (e) => e.idQuestion === answer.idQuestion
+      (e) => +e.idQuestion === +answer.idQuestion
     );
+
     return {
       ...answer,
       ...completeQuestion,

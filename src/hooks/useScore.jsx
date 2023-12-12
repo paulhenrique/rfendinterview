@@ -1,13 +1,16 @@
 import { useSelector } from "react-redux";
 import { getQuizScore } from "../db/services";
+import useQuizzes from "@/api/hooks/useQuizzes";
 
 const formatToPercent = (value) =>
   !isNaN(+value) ? `${(value * 100).toFixed(2)}%` : "--";
 
 export const useScore = () => {
   const { realizedQuizes } = useSelector((state) => state.user);
+  const { data: quizzes = [] } = useQuizzes("");
 
-  const quizesWithScore = realizedQuizes?.map((q) => getQuizScore(q)) || [];
+  const quizesWithScore =
+    realizedQuizes?.map((q) => getQuizScore(quizzes)(q)) || [];
 
   const passedQuestions =
     quizesWithScore?.reduce(
